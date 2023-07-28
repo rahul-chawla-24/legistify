@@ -1,4 +1,4 @@
-const URL = "http://localhost:5500/";
+const URL = "https://lazy-gold-ladybug-tam.cyclic.app/";
 
 function fetchedLawyers(lawyers) {
   return { type: "FETCHED_LAWYERS", lawyers: lawyers };
