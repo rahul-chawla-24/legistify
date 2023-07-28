@@ -1,4 +1,4 @@
-const URL = "https://lazy-gold-ladybug-tam.cyclic.app/";
+const URL = "https://legistify-be.onrender.com/";
 
 function fetchedLawyers(lawyers) {
   return { type: "FETCHED_LAWYERS", lawyers: lawyers };
