@@ -42,7 +42,10 @@ export default function Navbar() {
             borderRadius: "2px",
             backgroundColor: elem?.name === selected ? "#F9FAFB" : undefined,
             cursor: "pointer",
-
+            borderTop:
+              elem?.name === selected ? `1px solid #D9DCE1` : undefined,
+            borderBottom:
+              elem?.name === selected ? `1px solid #D9DCE1` : undefined,
             // border: elem?.name === selected ? "0.2px solid #D0D5DD" : undefined,
           }}
           alignItems="center"

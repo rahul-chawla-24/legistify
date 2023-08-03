@@ -8,7 +8,7 @@ const lawyersReducer = (oldState = [], action) => {
       return oldState;
   }
 };
-const loadingReducer = (oldState = "false", action) => {
+const loadingReducer = (oldState = false, action) => {
   switch (action.type) {
     case "FETCHED_LAWYERS":
       return false;

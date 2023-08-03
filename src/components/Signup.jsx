@@ -16,6 +16,7 @@ import { primaryColor } from "../libs/constant";
 import { connect } from "react-redux";
 import { createUser } from "../redux/actionCreator";
 import { useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 function Copyright(props) {
   return (
@@ -39,7 +40,8 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-function SignInSide({ createUser, user }) {
+function SignInSide({ createUser, user, loading }) {
+  console.log("loading", loading);
   const navigate = useNavigate();
   React.useEffect(() => {
     if (user) {
@@ -136,11 +138,18 @@ function SignInSide({ createUser, user }) {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
+
               <Button
                 type="submit"
+                disabled={loading}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2, backgroundColor: primaryColor }}
+                endIcon={
+                  loading ? (
+                    <CircularProgress color="inherit" size={"1.5rem"} />
+                  ) : undefined
+                }
               >
                 Sign In
               </Button>

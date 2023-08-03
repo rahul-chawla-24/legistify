@@ -16,17 +16,19 @@ export default function TextHeading({
   onClose,
   search,
   setSearch,
+  py = 0,
 }) {
   return (
     <Stack
       bgcolor={"white"}
-      height="70px"
+      height={"70px"}
       direction={"row"}
       sx={{
         borderBottom: "1px solid #E7E7E7",
         justifyContent: "space-between",
         alignItems: "center",
       }}
+      py={py}
       px={2}
     >
       <Typography

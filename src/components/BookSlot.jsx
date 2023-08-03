@@ -1,4 +1,10 @@
-import { Button, Dialog, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  Dialog,
+  Stack,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
@@ -16,6 +22,7 @@ function BookSlot({
   lawyer,
   user,
   bookAndUpdateSlot,
+  loading,
 }) {
   const [selectedSlot, setSelectedSlotIndex] = useState(null);
 
@@ -34,17 +41,18 @@ function BookSlot({
       open={showDialog}
       classes={{
         paper: {
-          position: "absolute",
+          position: "relative",
           top: "30%",
           left: "50%",
           transform: "translate(-50%, -50%)",
         },
       }}
     >
-      <Stack sx={{ width: "600px", minHeight: "80vh" }}>
+      <Stack sx={{ width: "500px", maxHeight: "70vh" }} position="relative">
         <TextHeading
           text={"Book a slot"}
           onClose={() => setShowDialog(false)}
+          py={2}
         />
         <Stack py={2} px={2}>
           <Typography
@@ -60,7 +68,7 @@ function BookSlot({
           {slots?.map((item, index) => (
             <Stack
               key={item?.time}
-              h="80px"
+              h="60px"
               justifyContent={"center"}
               py={2}
               sx={{
@@ -127,32 +135,37 @@ function BookSlot({
             </Stack>
           ))}
         </Stack>
-
-        {selectedSlot !== null && (
-          <Stack
-            direction={"row"}
-            height="80px"
-            width={"100%"}
-            bgcolor={"white"}
-            position={"absolute"}
-            justifyContent="center"
-            bottom={0}
-          >
-            <Button
-              variant="contained"
-              sx={{
-                mt: 3,
-                mb: 2,
-                backgroundColor: primaryColor,
-                width: "150px",
-              }}
-              onClick={() => handleSubmit()}
-            >
-              Book
-            </Button>
-          </Stack>
-        )}
       </Stack>
+      {selectedSlot !== null && (
+        <Stack
+          direction={"row"}
+          height="80px"
+          width={"500px"}
+          bgcolor={"white"}
+          position={"fixed"}
+          justifyContent="center"
+          bottom={"105px"}
+        >
+          <Button
+            variant="contained"
+            sx={{
+              mt: 3,
+              mb: 2,
+              backgroundColor: primaryColor,
+              width: "150px",
+            }}
+            onClick={() => handleSubmit()}
+            disabled={loading}
+            endIcon={
+              loading ? (
+                <CircularProgress color="inherit" size={"1.5rem"} />
+              ) : undefined
+            }
+          >
+            Book
+          </Button>
+        </Stack>
+      )}
     </Dialog>
   );
 }
